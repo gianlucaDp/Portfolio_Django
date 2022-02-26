@@ -49,38 +49,15 @@
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Portfolio Django example</h1>
-                <p class="lead text-muted">This is an example portfolio made in Django with PostgreSQL and Bootstrap</p>
+                <h1 class="fw-light">{{ job.summary }}</h1>
                 <p>
-
-                    <a href="https://github.com/" class="btn btn-primary my-2">Github profile</a>
-                    <a href="mailto:mail@mail.me" class="btn btn-secondary my-2">Email me</a>
-                    <img src="{% static 'django.png' %}" height=300/>
+                    <img src="{{ job.image.url }}" height=300/>
                 </p>
+                <p class="lead text-muted"> {{ job.detail }}</p>
+                <a href="{% url 'home' %}" class="btn btn-primary my-2">Back</a>
             </div>
         </div>
     </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <h1>All my jobs</h1>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                {% for job in jobs %}
-                <a href="{% url 'detail' job.id %}">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img class="card-img-top" width="100%" height="225" src="{{ job.image.url }}">
-                        <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
-                        </div>
-                    </div>
-                </div>
-                </a>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
 </main>
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
